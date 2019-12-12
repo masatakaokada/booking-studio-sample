@@ -69,3 +69,6 @@ gem 'jquery-rails'
 
 # FontAwesome::Sass(アイコン)
 gem 'font-awesome-sass', '~> 5.11.2'
+
+# devise(ログイン機能)
+gem 'devise'
