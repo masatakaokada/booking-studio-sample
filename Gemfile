@@ -66,3 +66,6 @@ gem 'unicorn'
 # Bootstrap
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+
+# FontAwesome::Sass(アイコン)
+gem 'font-awesome-sass', '~> 5.11.2'
