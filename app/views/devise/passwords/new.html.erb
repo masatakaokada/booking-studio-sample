@@ -2,7 +2,7 @@
   <div class='container'>
     <h2 class="title m-4">パスワードをお忘れですか？</h2>
 
-    <%= form_with scope: resource, as: resource_name, url: password_path(resource_name), html: { class: "mt-5, update_password" }, local: true do |f| %>
+    <%= form_with scope: resource, as: resource_name, url: password_path(resource_name), html: { class: "mt-5, update_password" }, method: :post, local: true do |f| %>
     <div class="text-center"><%= render "devise/shared/error_messages", resource: resource %></div>
 
     <div class="form-group">
