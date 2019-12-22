@@ -78,3 +78,7 @@ gem 'font-awesome-sass', '~> 5.11.2'
 
 # devise(ログイン機能)
 gem 'devise'
+
+# devise日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
