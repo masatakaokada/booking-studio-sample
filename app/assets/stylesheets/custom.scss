@@ -197,3 +197,42 @@ body {
     }
   }
 }
+
+// changePassword
+.changePasswordPage {
+  margin-top: 10vh;
+
+  .title {
+    margin: 0;
+    text-align: center;
+  }
+
+  .change_password {
+    .form-group {
+      max-width: 500px;
+      margin: 0 auto 1rem;
+
+      .form-control {
+        background: #f6f8fa;
+      }
+    }
+  }
+
+  .passwordResetBtn {
+    padding: 12px;
+    width: 300px;
+    border-radius: 21px;
+    background: #29b744;
+    color: #fff;
+    text-align: center;
+    border: none;
+    margin-top: 20px;
+    opacity: 1;
+    transition: opacity .5s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
