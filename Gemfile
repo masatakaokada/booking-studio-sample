@@ -72,7 +72,6 @@ gem 'unicorn'
 # Bootstrap
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
-gem 'devise-bootstrap-views', '~> 1.0'
 
 # FontAwesome::Sass(アイコン)
 gem 'font-awesome-sass', '~> 5.11.2'
@@ -82,4 +81,3 @@ gem 'devise'
 
 # devise日本語化
 gem 'devise-i18n'
-gem 'devise-i18n-views'
