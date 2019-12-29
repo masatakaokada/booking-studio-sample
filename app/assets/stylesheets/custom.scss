@@ -2,11 +2,6 @@ body {
   overflow: visible;
 }
 
-.notice,
-.alert {
-  display: none;
-}
-
 // header
 .header {
   background: #c22a1f;
@@ -235,4 +230,22 @@ body {
       opacity: .7;
     }
   }
+}
+
+// ログイン画面
+
+.container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
 }
