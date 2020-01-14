@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   # トップページ
   root "top#index"
+
+  resources :studios
 end
