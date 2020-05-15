@@ -39,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # テストに使用
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 group :development do
@@ -48,10 +53,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # テストに使用
-  gem 'rspec-rails'
-  gem "factory_bot_rails"
-  gem 'faker'
+
   # メール確認用
   gem 'letter_opener_web', '~> 1.0'
 end
@@ -81,6 +83,9 @@ gem 'devise'
 
 # devise日本語化
 gem 'devise-i18n'
+
+# エラーメッセージの日本語化
+gem 'rails-i18n'
 
 # ハッシュをActiveRecordと同じようにデータを操作
 gem 'active_hash'
