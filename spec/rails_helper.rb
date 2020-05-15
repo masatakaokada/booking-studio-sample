@@ -64,10 +64,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Factory_botのメソッドを使用する際に、クラス名の指定を省略
-  config.include FactoryBot::Syntax::Methods
-
   # deviseのtest_helperとmacrosをcontroller内で使えるようにする
   config.include Devise::TestHelpers, type: :controller
   config.include ControllerMacros, type: :controller
+
+  #sign_inヘルパー
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # Factory_botのメソッドを使用する際に、クラス名の指定を省略
+  config.include FactoryBot::Syntax::Methods
 end
