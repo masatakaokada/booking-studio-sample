@@ -81,3 +81,6 @@ gem 'devise'
 
 # devise日本語化
 gem 'devise-i18n'
+
+# ハッシュをActiveRecordと同じようにデータを操作
+gem 'active_hash'
