@@ -1,2 +1,21 @@
-<h1>Studios#index</h1>
-<p>Find me in app/views/studios/index.html.erb</p>
+<div class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+
+      <% @studios.each do | studio | %>
+
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="https://blog.canpan.info/kurosengoku/img/fluit.jpg" alt="カードの画像">
+          <div class="card-body">
+            <h5 class="card-title"><%= studio.name %></h5>
+            <p class="card-text">スタジオの説明など</p>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
