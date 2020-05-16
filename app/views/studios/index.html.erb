@@ -6,11 +6,15 @@
 
       <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
+          <%= link_to studio_path(studio.id) do %>
+
           <img class="card-img-top" src="https://blog.canpan.info/kurosengoku/img/fluit.jpg" alt="カードの画像">
           <div class="card-body">
             <h5 class="card-title"><%= studio.name %></h5>
             <p class="card-text">スタジオの説明など</p>
           </div>
+
+          <% end %>
         </div>
       </div>
 
