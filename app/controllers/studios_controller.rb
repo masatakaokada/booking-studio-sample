@@ -2,7 +2,7 @@ class StudiosController < ApplicationController
   before_action :set_studio, only: %i[show]
 
   def index
-    @studios = Studio.all
+    @studios = Studio.all.page(params[:page])
   end
 
   def show

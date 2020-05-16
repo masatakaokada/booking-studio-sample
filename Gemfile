@@ -89,3 +89,6 @@ gem 'rails-i18n'
 
 # ハッシュをActiveRecordと同じようにデータを操作
 gem 'active_hash'
+
+# ページネーション
+gem 'kaminari'
