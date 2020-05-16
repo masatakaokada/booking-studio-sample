@@ -6,6 +6,7 @@ class StudiosController < ApplicationController
   end
 
   def show
+    @rooms = @studio.rooms
   end
 
   private

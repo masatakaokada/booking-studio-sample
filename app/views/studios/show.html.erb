@@ -67,6 +67,21 @@
       </tr>
     </table>
 
+    <%# Room一覧 %>
+    <div class="row">
+      <% @rooms.each do | room | %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="https://blog.canpan.info/kurosengoku/img/fluit.jpg" alt="カードの画像">
+          <div class="card-body">
+            <h5 class="card-title"><%= room.name %></h5>
+            <p class="card-text">部屋の説明など</p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
 </div>
