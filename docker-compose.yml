@@ -1,32 +1,27 @@
-version: '2'
+version: '3'
 services:
   app:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile
-    command: bundle exec unicorn -p 3000 -c /app/config/unicorn.rb
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec unicorn -p 3000 -c /app/config/unicorn.rb"
     ports:
       - '3000:3000'
     volumes:
-      - /var/tmp
+      - /app/tmp
       - .:/app
     depends_on:
       - db
-    extends:
-      file: ./docker/mysql/password.yml
-      service: password
 
   db:
-    build:
-      context: .
-      dockerfile: ./docker/mysql/Dockerfile
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     ports:
       - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - db_data:/var/lib/mysql
-    extends:
-      file: ./docker/mysql/password.yml
-      service: password
+      - db-data:/var/lib/mysql
 
   nginx:
     build:
@@ -34,8 +29,9 @@ services:
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - '80:80'
-    volumes_from:
+    depends_on:
       - app
 
 volumes:
-  db_data:
+  db-data:
+    driver: local
