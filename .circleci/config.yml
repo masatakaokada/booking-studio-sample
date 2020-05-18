@@ -24,11 +24,11 @@ jobs:
 
       # keyの内容を元に保存されていたキャッシュを復元
       - restore_cache:
-        # 復元するキャッシュキーのリスト
-        keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # 完全に一致するものが見つからない場合、最新のキャッシュを使用するようにする
-          - v1-dependencies-
+          # 復元するキャッシュキーのリスト
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # 完全に一致するものが見つからない場合、最新のキャッシュを使用するようにする
+            - v1-dependencies-
 
       - run: 
           name: bundle install
@@ -37,14 +37,14 @@ jobs:
 
       # キャッシュの生成と保存
       - save_cache:
-        paths:
-          - ./vendor/bundle
-        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Rubocop
       - run:
-        name: Rubocop
-        command: bundle exec rubocop
+          name: Rubocop
+          command: bundle exec rubocop
 
   rspec:
     docker:
