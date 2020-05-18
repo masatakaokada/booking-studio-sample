@@ -7,13 +7,15 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
         environment:
-          - RAILS_ENV: test
+          RAILS_ENV: test
+          MYSQL_PASSWORD: ''
+          MYSQL_HOST: 127.0.0.1
 
       - image: circleci/mysql:8.0
+        command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          - MYSQL_PASSWORD: ''
-          - MYSQL_HOST: 127.0.0.1
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+
     executor: ruby/default
 
     working_directory: ~/repo
@@ -24,11 +26,11 @@ jobs:
 
       # keyの内容を元に保存されていたキャッシュを復元
       - restore_cache:
-        # 復元するキャッシュキーのリスト
-        keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # 完全に一致するものが見つからない場合、最新のキャッシュを使用するようにする
-          - v1-dependencies-
+          # 復元するキャッシュキーのリスト
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # 完全に一致するものが見つからない場合、最新のキャッシュを使用するようにする
+            - v1-dependencies-
 
       - run: 
           name: bundle install
@@ -37,26 +39,28 @@ jobs:
 
       # キャッシュの生成と保存
       - save_cache:
-        paths:
-          - ./vendor/bundle
-        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Rubocop
       - run:
-        name: Rubocop
-        command: bundle exec rubocop
+          name: Rubocop
+          command: bundle exec rubocop
 
   rspec:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
         environment:
-          - RAILS_ENV: test
+          RAILS_ENV: test
+          MYSQL_PASSWORD: ''
+          MYSQL_HOST: 127.0.0.1
 
       - image: circleci/mysql:8.0
+        command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          - MYSQL_PASSWORD: ''
-          - MYSQL_HOST: 127.0.0.1
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+
     executor: ruby/default
 
     working_directory: ~/repo
@@ -75,6 +79,7 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+
       # Rspec
       - run:
           name: Rspec
