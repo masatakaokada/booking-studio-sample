@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_043117) do
 
   create_table "studios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
