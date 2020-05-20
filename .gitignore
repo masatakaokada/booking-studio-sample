@@ -27,8 +27,6 @@
 /config/master.key
 
 .DS_Store
-/docker/mysql/password.yml
-/docker/mysql/volumes
 
 /public/packs
 /public/packs-test
